@@ -319,3 +319,21 @@ def frecuencia():
 frecuencia()
 
 
+''' 19. Escribir un programa que pida números al usuario, motrar el factorial de cada uno y, al 
+finalizar, la cantidad total de números leídos en total. Utilizar una o más funciones, según 
+sea necesario'''
+
+def factorial(num):
+  list = [] 
+  p = 1 
+  for i in range(1,num+1):
+    list.append(i)
+  for num in list:
+    p = p * num
+  print('El factorial de {} es {}'.format(num,p))
+  print('Los número son: ',list)
+
+num_user = int(input('Ingrese un número: '))
+factorial(num_user)
+
+
