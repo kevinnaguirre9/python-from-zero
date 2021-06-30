@@ -71,9 +71,9 @@ se considerará válida si contiene el símbolo "@"'''
 def validate_email():
   email = input("Please, enter your email: ")
   if '@' in email:
-    print('Invalid email') 
-  else:
     print('Valid email') 
+  else:
+    print('Invalid email') 
   
 validate_email()
 
@@ -137,3 +137,57 @@ def main():
   
 main()
   
+
+'''Requerir al usuario que ingrese un número entero e informar si es primo o no,
+utilizando una función booleana que lo decida.'''
+
+def es_primo(num):
+  if (num <= 1):
+    return False
+
+  for i in range(2, num):
+    if(num%i == 0):
+      return False
+  
+  return True
+
+
+def main():
+  try: 
+    num = int(input("INGRESE UN NÚMERO: "))
+
+    if es_primo(num):
+      print("EL NÚMERO {} ES PRIMO".format(num))
+    else:
+      print("EL NÚMERO {} NO ES PRIMO".format(num))
+  except:
+      print("Error: El numero debe ser entero")
+
+
+main()
+
+
+'''Solicitar al usuario un número entero y luego un dígito. Informar la cantidad de
+ocurrencias del dígito en el número, utilizando para ello una función que calcule la
+frecuencia'''
+
+def frecuencia():
+  try:
+    num = int(input("INGRESE UN NÚMERO: "))
+    digit = int(input("INGRESE UN DÍGITO: "))
+
+    freq = 0
+    
+    for d in str(num):
+      if digit == int(d):
+        freq += 1
+    
+    print("El número de ocurrencias del dígito {} en el número {} es: {} ocurrencias".format(digit, num, freq))
+
+  except ValueError:
+    print("ERROR: El número debe ser entero")
+
+
+frecuencia()
+
+
