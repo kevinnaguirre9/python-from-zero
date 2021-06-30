@@ -81,7 +81,6 @@ validate_email()
 '''Solicitar números al usuario hasta que ingrese el cero. Por cada uno, mostrar la suma
 de sus dígitos (utilizando una función que realice dicha suma).'''
 
-
 def sum_digits():
   while True:
     try:
@@ -102,4 +101,39 @@ def sum_digits():
     
 sum_digits()
 
+
+'''Solicitar números al usuario hasta que ingrese el cero. Por cada uno, mostrar la suma
+de sus dígitos. Al finalizar, mostrar la sumatoria de todos los números ingresados y
+la suma de sus dígitos'''
+
+def sum_digits(number):
+  suma = 0
+  for digit in str(number):
+    suma += int(digit)
+
+  return suma
+
+def main():
+  input_numbers = []
+  while True:
+    try:
+      number = int(input('Please, enter a number: '))
+
+      if number == 0:
+        len_numbers = len(input_numbers)
+        total_sum = sum(input_numbers)
+        digits_total_sum = sum_digits(total_sum)
+        print('Total números ingresados:', len_numbers)
+        print('Sumatoria de todos los números ingresados:', total_sum)
+        print('Sumatoria de todos los números ingresados:', digits_total_sum)
+        break
+      
+      input_numbers.append(number)
+      number_digits_sum = sum_digits(number)
+      print(number_digits_sum)
+    
+    except ValueError:
+      print('Invalid input')
+  
+main()
   
