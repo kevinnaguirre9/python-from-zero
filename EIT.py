@@ -115,15 +115,39 @@ print(result)
 '''8. Escribir una función que devuelva un conjunto formado por los números
 compuestos (no primos) menores que un N dado.'''
 
+def es_primo(num):
+  if (num <= 1):
+    return False
+
+  for i in range(2, num):
+    if(num%i == 0):
+      return False
+  
+  return True
+
+def obtener_compuestos(num):
+  list_no_primos = [i for i in range(2, num+1) if not es_primo(i)] 
+  return list_no_primos
+
+
+no_primos = obtener_compuestos(100)
+print(no_primos)
+
 
 '''9. Realiza una función separar(lista) que tome una lista de números enteros y devuelva
 dos listas ordenadas. La primera con los números pares y la segunda con los
 números impares.'''
 
+def separar(lista):
+  pares = [i for i in lista if i%2 == 0]
+  impares = [j for j in lista if j%2 != 0]
+
+  return sorted(pares), sorted(impares)
 
 
-
-
+pares, impares = separar([4, 17, 9, 8, 20, 37, 15, 51, 33, 86, 90, 18, 99, 27])
+print('Números pares:', pares)
+print('Números impares:', impares)
 
 
 '''10. Realiza una función llamada area_rectangulo(base, altura) que devuelva el área del
