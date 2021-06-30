@@ -1,4 +1,80 @@
-'''Realiza una función llamada area_rectangulo(base, altura) que devuelva el área del
+'''1. Escribir una función en Python que, dada una lista de números, devuelva otra lista
+en orden inverso. Para realizar este ejercicio se deberá utilizar un bucle o estructura
+repetitiva. No se permite el uso de funciones miembro de la clase list (en especial
+list.reverse()).'''
+
+def get_reverse_list(num_list):
+  reversed_list = []
+  for i in range(len(num_list)-1, -1, -1):
+    reversed_list.append(num_list[i])
+  
+  print(reversed_list)
+
+my_list = [23, 48, 10, 15, 3, 90]
+get_reverse_list(my_list)
+
+
+'''Escribir una función que, dado un número entero N, devuelva una lista con todos los
+números primos hasta N. Para solucionar el ejercicio debéis crear una función
+auxiliar que indique si un determinado número es primo (retornando un valor
+booleano).'''
+
+def es_primo(num):
+  if (num <= 1):
+    return False
+
+  for i in range(2, num):
+    if(num%i == 0):
+      return False
+  
+  return True
+
+def obtener_primos(num):
+  list_primos = []
+
+  for i in range(num+1):
+    if es_primo(i):
+      list_primos.append(i)
+    
+  return list_primos
+
+
+result = obtener_primos(100)
+print(result)
+
+
+'''3. Escribir una función que reciba una tupla compuesta por caracteres, y devuelva una
+lista con los caracteres en mayúsculas. Debéis recorrer la tupla carácter a carácter
+para realizar la conversión. Para convertir un carácter a mayúscula podéis usar el
+método upper(). Por ejemplo ’a’.upper() nos devuelve ’A’.'''
+
+def get_upper(tupla):
+  char_upper = []
+  for char in tupla:
+    char_upper.append(char.upper())
+
+  return char_upper
+
+print(get_upper(('a', 'b', 'c', 'd', 'Elena')))
+
+
+'''4. Convertir el texto ’ejemplo’ en una lista que contenga sus 7 caracteres. Después
+convertirlo en una tupla y usando la función del ejercicio anterior obtener una lista
+con el texto en mayúsculas.'''
+
+
+texto = 'ejemplo'
+letters_list = []
+
+for letter in texto:
+  letters_list.append(letter)
+
+letters_tuple = tuple(letters_list)
+print(get_upper(letters_tuple))
+
+
+
+'''10. Realiza una función llamada area_rectangulo(base, altura) que devuelva el área del
 rectangulo a partir de una base y una altura. Calcula el área de un rectángulo de 15
 de base y 10 de altura.'''
 
@@ -10,7 +86,7 @@ result = area_rectangulo(15, 10)
 print('El área es:', result)
 
 
-'''Realiza una función llamada relacion(a, b) que a partir de dos números cumpla lo
+'''11. Realiza una función llamada relacion(a, b) que a partir de dos números cumpla lo
 siguiente:
 a. Si el primer número es mayor que el segundo, debe devolver 1.
 b. Si el primer número es menor que el segundo, debe devolver -1.
@@ -33,7 +109,7 @@ print(result2)
 print(result3)
 
 
-'''. Realiza una función llamada intermedio(a, b) que a partir de dos números, devuelva
+'''12. Realiza una función llamada intermedio(a, b) que a partir de dos números, devuelva
 su punto intermedio. Cuando lo tengas comprueba el punto intermedio entre -12 y
 24.'''
 
@@ -45,7 +121,7 @@ p_int = intermedio(-12, 24)
 print(p_int)
 
 
-'''Realiza una función llamada recortar(numero, minimo, maximo) que reciba tres
+'''13. Realiza una función llamada recortar(numero, minimo, maximo) que reciba tres
 parámetros. El primero es el número a recortar, el segundo es el límite inferior y el
 tercero el límite superior. La función tendrá que cumplir lo siguiente:
 a. Devolver el límite inferior si el número es menor que éste
@@ -64,7 +140,7 @@ print(recortar(15, 0, 10))
 
 
 
-'''Solicitar al usuario que ingrese su dirección email. Imprimir un mensaje indicando si
+'''14. Solicitar al usuario que ingrese su dirección email. Imprimir un mensaje indicando si
 la dirección es válida o no, valiéndose de una función para decidirlo. Una dirección
 se considerará válida si contiene el símbolo "@"'''
 
@@ -78,7 +154,7 @@ def validate_email():
 validate_email()
 
 
-'''Solicitar números al usuario hasta que ingrese el cero. Por cada uno, mostrar la suma
+'''15. Solicitar números al usuario hasta que ingrese el cero. Por cada uno, mostrar la suma
 de sus dígitos (utilizando una función que realice dicha suma).'''
 
 def sum_digits():
@@ -102,7 +178,7 @@ def sum_digits():
 sum_digits()
 
 
-'''Solicitar números al usuario hasta que ingrese el cero. Por cada uno, mostrar la suma
+'''16. Solicitar números al usuario hasta que ingrese el cero. Por cada uno, mostrar la suma
 de sus dígitos. Al finalizar, mostrar la sumatoria de todos los números ingresados y
 la suma de sus dígitos'''
 
@@ -138,7 +214,7 @@ def main():
 main()
   
 
-'''Requerir al usuario que ingrese un número entero e informar si es primo o no,
+'''17. Requerir al usuario que ingrese un número entero e informar si es primo o no,
 utilizando una función booleana que lo decida.'''
 
 def es_primo(num):
@@ -167,7 +243,7 @@ def main():
 main()
 
 
-'''Solicitar al usuario un número entero y luego un dígito. Informar la cantidad de
+'''18. Solicitar al usuario un número entero y luego un dígito. Informar la cantidad de
 ocurrencias del dígito en el número, utilizando para ello una función que calcule la
 frecuencia'''
 
