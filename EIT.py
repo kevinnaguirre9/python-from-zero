@@ -4,17 +4,14 @@ repetitiva. No se permite el uso de funciones miembro de la clase list (en espec
 list.reverse()).'''
 
 def get_reverse_list(num_list):
-  reversed_list = []
-  for i in range(len(num_list)-1, -1, -1):
-    reversed_list.append(num_list[i])
-  
+  reversed_list = [num_list[i] for i in range(len(num_list)-1, -1, -1)]
   print(reversed_list)
 
 my_list = [23, 48, 10, 15, 3, 90]
 get_reverse_list(my_list)
 
 
-'''Escribir una función que, dado un número entero N, devuelva una lista con todos los
+'''2. Escribir una función que, dado un número entero N, devuelva una lista con todos los
 números primos hasta N. Para solucionar el ejercicio debéis crear una función
 auxiliar que indique si un determinado número es primo (retornando un valor
 booleano).'''
@@ -30,12 +27,7 @@ def es_primo(num):
   return True
 
 def obtener_primos(num):
-  list_primos = []
-
-  for i in range(num+1):
-    if es_primo(i):
-      list_primos.append(i)
-    
+  list_primos = [i for i in range(num+1) if es_primo(i)]   
   return list_primos
 
 
@@ -49,10 +41,7 @@ para realizar la conversión. Para convertir un carácter a mayúscula podéis u
 método upper(). Por ejemplo ’a’.upper() nos devuelve ’A’.'''
 
 def get_upper(tupla):
-  char_upper = []
-  for char in tupla:
-    char_upper.append(char.upper())
-
+  char_upper = [char.upper() for char in tupla]
   return char_upper
 
 print(get_upper(('a', 'b', 'c', 'd', 'Elena')))
@@ -64,13 +53,76 @@ con el texto en mayúsculas.'''
 
 
 texto = 'ejemplo'
-letters_list = []
-
-for letter in texto:
-  letters_list.append(letter)
+letters_list = [letter for letter in texto]
 
 letters_tuple = tuple(letters_list)
 print(get_upper(letters_tuple))
+
+
+'''5. Escribir una función que, dada una lista de números, devuelva una lista con sólo los
+elementos en posición par.'''
+
+def get_elements(num_list):
+  pares_list = [num_list[pos] for pos in range(2, len(num_list), 2)]
+  return pares_list
+
+result = get_elements([21, 48, 32, 101, 50, 49, 300, 39, 87, 18])
+print(result)
+
+
+'''6. Extender la función anterior para que, dada una lista y unos índices, nos devuelva la
+lista resultado de coger sólo los elementos indicados por los índices. Por ejemplo si
+tenemos la lista [1,2,3,4,5,6] y los índices [0,1,3] debería devolver la lista [1,2,4].'''
+
+def get_elements_by_pos(num_list, indices):
+  try:
+    final_list = [num_list[i] for i in indices]
+    return final_list
+  except IndexError as err:
+    print(err)
+
+result = get_elements_by_pos([1,2,3,4,5,6], [0, 1, 3, 5])
+print(result)
+
+
+'''7. Escribir una función que nos devuelva cuántas veces aparece cada una de las
+palabras de un texto (frecuencia de aparición de las palabras). Para ello podéis usar
+un diccionario donde la llave sea cada una de las palabras del texto y el contenido
+guarde el número de apariciones de la palabra. Para simplificar el ejercicio, podéis
+usar el método split(’ ’), que, dado un separador (el espacio), nos devuelve una lista
+con todas las palabras de un texto de forma separada. Por ejemplo: ’hola esto es un
+ejemplo’.split(’ ’) nos devolvería: [’hola’, ’esto’, ’es’, ’un’, ’ejemplo’]'''
+
+
+def get_frequence(text):
+  text = text.split()
+  dict_freq = {}
+
+  for word in text:
+    count = 0
+    for i in range(len(text)):
+      if word.lower() == text[i].lower():
+        count += 1
+    dict_freq.update({word: count})
+
+  return dict_freq
+
+
+result = get_frequence('Elena Sofía Fernández Balladares')
+print(result)
+
+
+'''8. Escribir una función que devuelva un conjunto formado por los números
+compuestos (no primos) menores que un N dado.'''
+
+
+'''9. Realiza una función separar(lista) que tome una lista de números enteros y devuelva
+dos listas ordenadas. La primera con los números pares y la segunda con los
+números impares.'''
+
+
+
+
 
 
 
