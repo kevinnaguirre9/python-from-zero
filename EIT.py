@@ -215,7 +215,6 @@ def recortar(numero, minimo, maximo):
 print(recortar(15, 0, 10))
 
 
-
 '''14. Solicitar al usuario que ingrese su dirección email. Imprimir un mensaje indicando si
 la dirección es válida o no, valiéndose de una función para decidirlo. Una dirección
 se considerará válida si contiene el símbolo "@"'''
@@ -343,7 +342,7 @@ def frecuencia():
 frecuencia()
 
 
-''' 19. Escribir un programa que pida números al usuario, motrar el factorial de cada uno y, al 
+'''19. Escribir un programa que pida números al usuario, motrar el factorial de cada uno y, al 
 finalizar, la cantidad total de números leídos en total. Utilizar una o más funciones, según 
 sea necesario'''
 
@@ -374,5 +373,65 @@ def main():
       print('Invalid input')
 
 main()
+
+
+'''20. Escribir un programa que pida números positivos al usuario. Mostrar el número cuya
+sumatoria de dígitos fue mayor y la cantidad de números cuya sumatoria de dígitos fue
+menor que 10. Utilizar una o más funciones, según sea necesario.'''
+
+
+'''21. Solicitar al usuario el ingreso de números primos. La lectura finalizará cuando ingrese un
+número que no sea primo. Por cada número, mostrar la suma de sus dígitos. También
+solicitar al usuario un dígito e informar la cantidad de veces que aparece en el número'''
+
+def es_primo(num):
+  if (num <= 1):
+    return False
+
+  for i in range(2, num):
+    if(num%i == 0):
+      return False
+  
+  return True
+
+def sum_digits(number):
+  suma = 0
+  for digit in str(number):
+    suma += int(digit)
+  return suma
+
+def get_freq(num, digit):
+  freq = 0
+  for d in str(num):
+      if digit == int(d):
+        freq += 1
+  return freq
+
+
+def primos_sum_digits():
+    while True:
+      try:
+        print('--'*20)
+        num = int(input("INGRESE UN NÚMERO PRIMO: "))
+
+        if not es_primo(num):
+          print('El número no es primo')
+          break
+
+        sum = sum_digits(num)
+        print('La suma de los dígitos es {}'.format(sum))
+
+        digit = int(input("INGRESE UN DÍGITO PARA SABER EL NÚMERO DE OCURRENCIAS EN EL NÚMERO INGRESADO PREVIAMENTE: "))
+        freq = get_freq(num, digit)
+        print("El número de ocurrencias del dígito {} en el número {} es: {} ocurrencias".format(digit, num, freq))
+      except ValueError:
+        print('Error. El número debe ser entero.')
+
+  
+primos_sum_digits()
+
+
+
+
 
 
