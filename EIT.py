@@ -1,3 +1,5 @@
+import numpy as np
+
 '''1. Escribir una función en Python que, dada una lista de números, devuelva otra lista
 en orden inverso. Para realizar este ejercicio se deberá utilizar un bucle o estructura
 repetitiva. No se permite el uso de funciones miembro de la clase list (en especial
@@ -379,6 +381,48 @@ main()
 sumatoria de dígitos fue mayor y la cantidad de números cuya sumatoria de dígitos fue
 menor que 10. Utilizar una o más funciones, según sea necesario.'''
 
+def sum_digits(number):
+  suma = 0
+  for digit in str(number):
+    suma += int(digit)
+
+  return suma
+
+def main():
+    numbers = np.array([], dtype=int)
+    digits = np.array([], dtype=int)
+    while True:
+        try:
+            print('---'*15)
+            num = int(input('POR FAVOR, INGRESE UN NUMERO POSITIVO: '))
+
+            if num < 0:
+                print('Saliendo')
+                break
+
+            numbers = np.append(numbers, num)
+            digits = np.append(digits, sum_digits(num))
+
+            #Mostrar el número cuya sumatoria de dígitos fue mayor
+            numbers_max_digit = [numbers[i] for i in range(len(digits)) if digits[i] == max(digits)]
+
+            #cantidad de números cuya sumatoria de dígitos fue menor que 10
+            less_than_ten = len(digits[digits < 10])
+
+            print('Número(s) cuya sumatoria de dígitos fue la mayor cantidad: {}'.format(numbers_max_digit))
+            print('cantidad de números cuya sumatoria de dígitos fue menor que 10: {} número(s)'.format(less_than_ten))
+
+        except ValueError:
+            print("Input no válido")
+
+main()
+
+
+
+
+
+
+
 
 '''21. Solicitar al usuario el ingreso de números primos. La lectura finalizará cuando ingrese un
 número que no sea primo. Por cada número, mostrar la suma de sus dígitos. También
@@ -467,7 +511,7 @@ def get_last_word_len(word):
   last_len = len(word_split[-1])
   return last_len
 
-get_len = get_last_word_len('      Kevin Aguirre  ')
+get_len = get_last_word_len('      Sergio Díaz  ')
 print(get_len)
 
 
