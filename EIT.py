@@ -382,7 +382,8 @@ menor que 10. Utilizar una o más funciones, según sea necesario.'''
 
 '''21. Solicitar al usuario el ingreso de números primos. La lectura finalizará cuando ingrese un
 número que no sea primo. Por cada número, mostrar la suma de sus dígitos. También
-solicitar al usuario un dígito e informar la cantidad de veces que aparece en el número'''
+solicitar al usuario un dígito e informar la cantidad de veces que aparece en el número (frecuencia). 
+Al finalizar el programa, mostrar el factorial del mayor número ingresado'''
 
 def es_primo(num):
   if (num <= 1):
@@ -407,25 +408,40 @@ def get_freq(num, digit):
         freq += 1
   return freq
 
+def factorial(n):
+  fact = n
+  
+  for i in range(n-1,1,-1):
+    fact = fact * i
+  return fact
+
 
 def primos_sum_digits():
-    while True:
-      try:
-        print('--'*20)
-        num = int(input("INGRESE UN NÚMERO PRIMO: "))
+  input_numbers = []
+  while True:
+    try:
+      print('--'*20)
+      num = int(input("INGRESE UN NÚMERO PRIMO: "))
 
-        if not es_primo(num):
-          print('El número no es primo')
-          break
+      if not es_primo(num):
+        print('El número no es primo')
+        if len(input_numbers) > 0:
+          max_number = max(input_numbers)
+          fact = factorial(max_number)
+          print('A continuación se muestra el factorial del mayor número primo ingresado: ')
+          print('El factorial de {} es: {}'.format(max_number, fact))
+        break
 
-        sum = sum_digits(num)
-        print('La suma de los dígitos es {}'.format(sum))
+      input_numbers.append(num)  
 
-        digit = int(input("INGRESE UN DÍGITO PARA SABER EL NÚMERO DE OCURRENCIAS EN EL NÚMERO INGRESADO PREVIAMENTE: "))
-        freq = get_freq(num, digit)
-        print("El número de ocurrencias del dígito {} en el número {} es: {} ocurrencias".format(digit, num, freq))
-      except ValueError:
-        print('Error. El número debe ser entero.')
+      sum = sum_digits(num)
+      print('La suma de los dígitos es {}'.format(sum))
+
+      digit = int(input("INGRESE UN DÍGITO PARA SABER EL NÚMERO DE OCURRENCIAS EN EL NÚMERO INGRESADO PREVIAMENTE: "))
+      freq = get_freq(num, digit)
+      print("El número de ocurrencias del dígito {} en el número {} es: {} ocurrencias".format(digit, num, freq))
+    except ValueError:
+      print('Error. Debe ingresar un número entero.')
 
   
 primos_sum_digits()
