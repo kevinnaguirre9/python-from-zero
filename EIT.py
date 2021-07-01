@@ -447,7 +447,178 @@ def primos_sum_digits():
 primos_sum_digits()
 
 
+'''22. Escribir una función que, dado un número de Cedula de Identidad, retorne True si el número
+es válido y False si no lo es. Para que un número de DNI sea válido debe tener 10 dígitos.'''
+
+def is_valid(cedula):
+  if not len(cedula) == 10:
+    return False
+  return True
+
+print(is_valid('0953665551'))
 
 
+'''23. Escribir una función que, dado un string, retorne la longitud de la última palabra. Se
+considera que las palabras están separadas por uno o más espacios. También podría haber
+espacios al principio o al final del string pasado por parámetro.'''
+
+def get_last_word_len(word):
+  word_split = word.split()
+  last_len = len(word_split[-1])
+  return last_len
+
+get_len = get_last_word_len('      Kevin Aguirre  ')
+print(get_len)
 
 
+'''24. Escribir un programa que permita al usuario obtener un identificador para cada uno de los
+socios de un club. Para eso ingresará nombre completo y número de Cedula de cada socio,
+indicando que finalizará el procesamiento mediante el ingreso de un nombre vacío.'''
+
+def get_id():
+    n = 0
+    while True:
+        n +=1
+        print('---'*9)
+        name = input('POR FAVOR, INGRESE EL NOMBRE COMPLETO DEL SOCIO: ')
+
+        if(not (name and not name.isspace())):
+            break
+
+        cedula = input('INGRESA NÚMERO DE CÉDULA DEL SOCIO: ')
+        id_socio = 'S-' + str(n)
+        print('Identificador del socio:', id_socio)
+
+get_id()
+
+'''25. Precondición: el formato del nombre de los socios será: nombre apellido. Podría ingresarse
+más de un nombre, en cuyo caso será: nombre1 nombre2 apellido. Si un socio tuviera más
+de un apellido, el usuario sólo ingresará uno.'''
+
+def get_id():
+    n = 0
+    while True:
+        n +=1
+        print('---'*9)
+        primer_nombre = input('POR FAVOR, INGRESE EL PRIMER NOMBRE DEL SOCIO: ')
+        if(not (primer_nombre and not primer_nombre.isspace())):
+            break
+
+        preguna = input("¿DESEA ESCRIBIR UN SEGUNDO NOMBRE? (S/N): ")
+        if preguna.lower() == 's':
+            segundo_nombre = input('POR FAVOR, INGRESE EL SEGUNDO NOMBRE DEL SOCIO: ')
+        
+        apellido = input('POR FAVOR, INGRESE EL PRIMER APELLIDO DEL SOCIO: ')   
+
+        cedula = input('INGRESA NÚMERO DE CÉDULA DEL SOCIO: ')
+        id_socio = 'S-' + str(n)
+        print('Identificador del socio:', id_socio)
+
+get_id()
+
+
+'''26. Se debe validar que el número de CI tenga 10 dígitos. En caso contrario, el programa debe
+dejar al usuario en un bucle hasta que ingrese una Cedula correcta.'''
+
+def is_valid(cedula):
+  if not len(cedula) == 10:
+    return False
+  return True
+
+def get_id():
+    n = 0
+    while True:
+        n +=1
+        print('---'*9)
+        primer_nombre = input('POR FAVOR, INGRESE EL PRIMER NOMBRE DEL SOCIO: ')
+        if(not (primer_nombre and not primer_nombre.isspace())):
+            break
+
+        preguna = input("¿DESEA ESCRIBIR UN SEGUNDO NOMBRE? (S/N): ")
+        if preguna.lower() == 's':
+            segundo_nombre = input('POR FAVOR, INGRESE EL SEGUNDO NOMBRE DEL SOCIO: ')
+        
+        apellido = input('POR FAVOR, INGRESE EL PRIMER APELLIDO DEL SOCIO: ')   
+        cedula = input('INGRESA NÚMERO DE CÉDULA DEL SOCIO: ')
+
+        while not is_valid(cedula):
+            cedula = input('INGRESA UN NÚMERO DE CÉDULA DEL VÁLIDO: ')
+        
+        id_socio = 'S-' + str(n)
+        print('Identificador del socio:', id_socio)
+
+get_id()
+
+
+'''27. Por cada socio se debe imprimir su identificador único, el cual estará formado por: el primer
+nombre, la cantidad de letras del apellido y los primeros 3 dígitos de su CI. Ejemplo:
+'''
+
+def is_valid(cedula):
+  if not len(cedula) == 10:
+    return False
+  return True
+
+def get_id():
+    n = 0
+    while True:
+        n +=1
+        print('---'*18)
+        primer_nombre = input('POR FAVOR, INGRESE EL PRIMER NOMBRE DEL SOCIO: ')
+
+        if(not (primer_nombre and not primer_nombre.isspace())):
+            break
+
+        pregunta = input("¿DESEA ESCRIBIR UN SEGUNDO NOMBRE? (S/N): ")
+        pregunta = pregunta.lower()
+        while pregunta not in ['s', 'n']:
+            pregunta = input("¿DESEA ESCRIBIR UN SEGUNDO NOMBRE? (S/N): ")
+
+        if pregunta == 's':
+            segundo_nombre = input('POR FAVOR, INGRESE EL SEGUNDO NOMBRE DEL SOCIO: ')
+        
+        else:
+            segundo_nombre = ''
+        
+        apellido = input('POR FAVOR, INGRESE EL PRIMER APELLIDO DEL SOCIO: ')   
+        cedula = input('INGRESA NÚMERO DE CÉDULA DEL SOCIO: ')
+
+        while not is_valid(cedula):
+            cedula = input('INGRESA UN NÚMERO DE CÉDULA VÁLIDO (10 dígitos): ')
+        
+        id_socio = primer_nombre.upper() + str(len(apellido)) + cedula[:3]
+
+        if segundo_nombre != '':
+            nombre_completo = primer_nombre + ' ' + segundo_nombre + ' ' + apellido
+        else:
+            nombre_completo = primer_nombre + ' ' + apellido
+
+        print('**'*18)
+        print('Nombre: {}'.format(nombre_completo))
+        print('CI: {}'.format(cedula))
+        print('Identificador del socio:', id_socio)
+        print('**'*18)
+
+get_id()
+
+
+'''28. Escribir la función titulo(), la cual recibe un string y lo retorna convirtiendo la primera letra
+de cada palabra a mayúscula y las demás letras a minúscula, dejando inalterados los demás
+caracteres. Precondición: el separador de palabras es el espacio: " ".'''
+
+def to_title(text):
+    text_split = text.split()
+    title_words = []
+
+    for word in text_split:
+        new_word = ''
+        new_word += word[0].upper()
+        new_word += word[1:len(word)].lower()        
+        title_words.append(new_word)
+
+    title_words = " ".join(title_words)
+    print(title_words)
+
+
+to_title('kEvin      natAnEel  agUIrre      sÁncheZ')
+        
