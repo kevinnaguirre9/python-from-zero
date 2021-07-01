@@ -347,17 +347,32 @@ frecuencia()
 finalizar, la cantidad total de números leídos en total. Utilizar una o más funciones, según 
 sea necesario'''
 
-def factorial(num):
-  list = [] 
-  p = 1 
-  for i in range(1,num+1):
-    list.append(i)
-  for num in list:
-    p = p * num
-  print('El factorial de {} es {}'.format(num,p))
-  print('Los número son: ',list)
+def factorial(n):
+  fact = n
+  
+  for i in range(n-1,1,-1):
+    fact = fact * i
+  return fact
 
-num_user = int(input('Ingrese un número: '))
-factorial(num_user)
+
+def main():
+  input_numbers = []
+  while True:
+    try:
+      number = int(input('Please, enter a number: '))
+
+      if number == 0:
+        len_numbers = len(input_numbers)
+        print('Total números leídos:', len_numbers)
+        break
+      
+      input_numbers.append(number)
+      fact = factorial(number)
+      print('El factorial de {} es: {}'.format(number, fact))
+    
+    except ValueError:
+      print('Invalid input')
+
+main()
 
 
